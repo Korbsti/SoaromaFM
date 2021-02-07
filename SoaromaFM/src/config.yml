@@ -1,0 +1,256 @@
+# ********************************************** #
+#                                                #
+#     -- SoaromaFM Configuration File --         #
+#           -- Version 0.0.1 --                  #
+#                                                #
+# ********************************************** #
+
+# ----------------------------------------------- #
+# CHAT FORMAT CONFIGURATION
+# ----------------------------------------------- #
+# Set the users chat format
+# There are multiple placeholders for the default chat format
+# All of them are 
+# {gender-name}  - Meaning the name of the gender
+# {gender-prefix} - Meaning the gender prefix
+# {marriage-name} - Meaning the partners name
+# {marriage-heart} - Meaning display a heart if married
+# user is the player
+
+# Family chat format
+familyChatFormat: '{family} {displayName} &8>> &f{message}'
+
+globalChatFormat: '{vault-prefix}{soaroma-prefix}'
+
+# Global chat channel
+defaultChatFormat: "&b{familyName} {gender-prefix} &4{marriage-heart} "
+
+# Update display per chat
+updateDisplayNameChat: true
+
+# Family prefix chat channel
+family-chat-prefix: "&8[&4FM&8]"
+
+# Marriage heart-prefix | Linked with defaultChatFormat
+heart-prefix: "&4<3"
+
+# Marriage display name | linked with defaultChatFormat
+marriage-name: "&8|&4{partner-name}&8|&f"
+
+# Gender prefix | linked with defaultChatFormat
+gender-prefix: "{gender-prefix}"
+
+# Gender name | linked with defaultChatFormat
+gender-name: "{gender-name}"
+
+# Change users display name
+changeDisplayName: true
+
+# ----------------------------------------------- #
+# XP SHARE SYSTEM
+# ----------------------------------------------- #
+# Set the XP share system
+# Enable xp sharing
+enableXPFamilyShare: true
+
+# Enable message notify of gaining XP
+notifyFamilyXPGain: true
+
+# Percentage other family members gain when gaining XP (In percentages)
+sharedXPGain: 5.0
+
+# XP Gain message
+XPGainMessage: '&3Gained &4{xp-amount} xp &3| a member of your family has gained XP'
+
+# ----------------------------------------------- #
+# General Messages
+# ----------------------------------------------- #
+# Set general messages
+# Set marriage proposal
+marriageProposal: '&3Sent a marriage proposal to &4{name} &3with the family name of &4{family-name}'
+
+# Send to proposed player
+marriageProposalSend: '&4{name} &3sent a proposal to you &3with the family name of &4{family-name}&3, type /fm marry accept {name} to accept'
+
+# Accept marriage proposal
+marriageProposalAccept: '&4{name} &3has accepted your marriage proposal! Congratulations!'
+
+# Accept marriage proposal
+marriageProposalAccepter: '&4You are now married to &4{name}&3! Congratulations!'
+
+# Marriage proposal decline
+marriageProposalDecline: '&4{name} &3has erm declined your marriage proposal... sorry for your loss..'
+
+# Marriage proposal decline to decliner
+marriageProposalDeclineDecliner: '&3You have declined the proposal of &4{name}'
+
+# Message when a user declines anothers proposal but the other player didn't propose
+marriageProposalDeclineNotProposed: '&3Specified player did not send you a proposal... lol'
+
+# Marriage divorce
+marriageDivorce: '&3You have um... divorced {user}... ;-;'
+
+# Message to request being a child of a family
+childProposalMessage: '&4{name} &3has requested to adopt you! Type /fm adopt accept {name} to accept'
+
+# Child acceptance message
+childAcceptanceMessage: '&4{name} &3has accepted your request to be apart of the family and is now your child!'
+
+# Send message to child which accepted to be apart of the family
+childAcceptanceMessageToChild: '&3You are now the child of {name}!'
+
+# Child request decline message
+childDeclineMessage: '&4{name} &3has not requested your adoption to be apart of the family... lol'
+
+# Child request decline message
+sentAdoptMessage: '&3Sent adoption message'
+
+# Family leave
+leaveFamily: '&3You have left your family'
+
+# Switch channel to family
+switchToFamilyChat: '&3Switched to family chat'
+
+# Switch channel to global
+switchToGlobalChat: '&3Switched to global chat'
+
+# Same family
+sameFamily: '&3Umm... they are apart of your family... *cough* Alabama'
+
+# Leave your family first
+leaveFamilyFirst: '&3You have to leave your family first, &4/fm familyleave'
+
+who-is-menu:
+   - '&3----- &4{user} Info &3-----'
+   - '&3Parents: &4{parents}'
+   - '&3Siblings: &4{siblings}'
+   - '&3Married To: &4{married}'
+   - '&3Gender: &4{gender}'
+   - '&3Children: &4{children}'
+
+# Help menu
+help-menu:
+   - '&3----- &4SoaromaFM Help Menu &3-----'
+   - '&4/fm marry {user} {family-name} &3propose to user'
+   - '&4/fm divorce &3divorces user'
+   - '&4/fm marry decline {user} &3Decline the marriage proposal'
+   - '&4/fm help &3brings up help menu'
+   - '&4/fm chat &3Switch from family to global chat and vice versa'
+   - '&4/fm gender {gender} &3switches gender'
+   - '&4/fm familyleave &3Leaves current family'
+   - '&4/fm runaway &3No longer adopted'
+   - '&4/fm adopt {user} &3Adopt a user'
+   - '&4/fm adopt accept {user} &3Accept an adoption'
+   - '&4/fm disown {user} &3Disowns a child'
+   - '&4/fm who {user} &3Disowns a child'
+# ----------------------------------------------- #
+# Invalid argument messages and no permission
+# ----------------------------------------------- #
+# Set broadcast options
+# Genders
+# Invalid argument marriage
+invalidArgsMarriage: '&3Invalid arguments, proper is /fm marry (user) (family-name)'
+
+# Invalid arguments genera
+invalidArgsGeneral: '&3Invalid arguments'
+
+# Invalid argument child
+invalidArgsFamily: '&3Invalid arguments, you are currently not in a family'
+
+# Not married
+invalidArgsNotMarried: '&3You are not married'
+
+# Invalid argument child
+invalidArgsAlreadyMarried: '&3This user is already married'
+
+# Invalid argument gender
+invalidArgsGender: '&3Not a valid gender'
+
+# Invalid argument, taken family name
+invalidArgsFamilyNameTaken: '&3This family name has been taken'
+
+# Not the parent of the family
+invalidArgsAlreadyHaveParents: '&3This user already has parents'
+
+# Tried to marry themselves
+invalidArgsPropsalSameUser: '&3You cannot marry yourself... you are a lonely one... loser'
+
+# Tried to adopt a member of the family
+invalidArgsAdoptSameFamily: '&3They are inside your family!'
+
+# Tried to marry themselves
+invalidArgsAdoptSameUser: '&3You cannot adopt yourself... you are a lonely one... loser'
+
+# Invalid argument child
+invalidArgsPlayerNotOnline: '&3Player is not online'
+
+# Dont have parents
+invalidArgsPlayerNoParents: '&3You do not have any parents... orphan...'
+
+# Accept marriage proposal
+invalidMarriageAccept: '&4{name} &3has not proposed to you... maybe you should make the first move?'
+
+# No permission
+noPermission: '&3No permission'
+
+# Arent parent
+arentParent: '&3You are not the parent of this user'
+
+# Disowned child
+disownedChild: '&3You have yeeted *cough*.. disowned your child'
+
+# ----------------------------------------------- #
+# Broadcast Messages
+# ----------------------------------------------- #
+# Set broadcast options
+# Enable marriage broadcast options : will display to all users which two users got married and the family name
+enableMarriageBroadcast: true
+
+
+# Marriage broadcast message
+marriageBroadcastMessage: '&4{first-user} &3has married &4{second-user}&3 with the family name of &4{family-name}!'
+
+# Enable divorced broadcasts
+enableDivorceBroadcast: true
+
+# Marriage divorce message
+marriageDivorceBroadcast: '&4{first-user} &3has divorced &4{second-user}&3'
+
+# Enable marriage divorce broadcast options : will display to all users which two users got divorced
+enableMarriageBroadcast: true
+
+# Enable child acceptance broadcast options : will display to all users which user is now apart of which family
+enableChildAcceptanceBroadcast: true
+
+# Now apart of the family message
+childAcceptanceBroadcastMessage: '&4{parent} &3has adopted &4{child}'
+
+# Enable child acceptance broadcast options : will display to all users which user is now apart of which family
+enableChildLeaveBroadcast: true
+
+# Child acceptance broadcast message
+childRunawayBroadcastMessage: '&4{user} has ran away from their parents!'
+
+# Enable child broadcast disown
+enableChildDisownBroadcast: true
+
+childDisownBroadcast: '&4{user} &3has disowned &4{child}'
+
+# ----------------------------------------------- #
+# Genders List With Prefix
+# ----------------------------------------------- #
+# Set broadcast options
+# Genders
+# Note that the first name for "GENDERS" is also the same for "GENDER-PREFIX"
+genders:
+   - 'Male'
+   - 'Female'
+   - 'Apache'
+genders-prefix:
+   - '&b♂'
+   - '&c♀'
+   - 'o---/===\-'
+   
+# Gender change message
+genderChangeMessage: '&3Gender set to {gender}'
+# ----------------------------------------------- #
