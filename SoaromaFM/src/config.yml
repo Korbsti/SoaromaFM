@@ -1,9 +1,11 @@
 # ********************************************** #
 #                                                #
 #     -- SoaromaFM Configuration File --         #
-#           -- Version 0.0.1 --                  #
+#           -- Version 0.0.2 --                  #
 #                                                #
 # ********************************************** #
+
+# If you are having issues, message me on discord: TheLonelyGamer#5978
 
 # ----------------------------------------------- #
 # CHAT FORMAT CONFIGURATION
@@ -137,12 +139,14 @@ help-menu:
    - '&4/fm help &3brings up help menu'
    - '&4/fm chat &3Switch from family to global chat and vice versa'
    - '&4/fm gender {gender} &3switches gender'
+   - '&4/fm genderlist &3Lists all known genders'
+   - '&4/fm removegender &3Removes gender'
    - '&4/fm familyleave &3Leaves current family'
    - '&4/fm runaway &3No longer adopted'
    - '&4/fm adopt {user} &3Adopt a user'
    - '&4/fm adopt accept {user} &3Accept an adoption'
    - '&4/fm disown {user} &3Disowns a child'
-   - '&4/fm who {user} &3Disowns a child'
+   - '&4/fm who {user} &3Displays family info'
 # ----------------------------------------------- #
 # Invalid argument messages and no permission
 # ----------------------------------------------- #
@@ -253,4 +257,10 @@ genders-prefix:
    
 # Gender change message
 genderChangeMessage: '&3Gender set to {gender}'
+
+# List all known genders
+genderList: '&3Known genders are: {genders}'
+
+# Remove gender
+genderRemove: '&3Removed your gender'
 # ----------------------------------------------- #

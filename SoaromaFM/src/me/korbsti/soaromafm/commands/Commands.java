@@ -191,6 +191,38 @@ public class Commands implements CommandExecutor {
 				plugin.familyName.put(uuid, args[2]);
 				return true;
 			}
+			///// GENDER LIST /////
+			if ("genderlist".equalsIgnoreCase(args[0])) {
+				if (!player.hasPermission("fm.gender.list")) {
+					sender.sendMessage(plugin.configMessage.getConfigMessage("noPermission"));
+					return true;
+				}
+				ArrayList<String> genders = new ArrayList<String>();
+				for (String str : plugin.genderName) {
+					genders.add(str);
+				}
+				sender.sendMessage(
+						plugin.configMessage.getConfigMessage("genderList").replace("{genders}", genders.toString()));
+				return true;
+			}
+
+			/// REMOVE GENDER ///
+			if ("removegender".equalsIgnoreCase(args[0])) {
+				if (!player.hasPermission("fm.gender.remove")) {
+					sender.sendMessage(plugin.configMessage.getConfigMessage("noPermission"));
+					return true;
+				}
+				plugin.playerDataManager.setGenderTo(player.getUniqueId().toString(), "N/A");
+				try {
+					plugin.yamlConfigData.save(plugin.configFileData);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				plugin.display.setDisplayName(player);
+				sender.sendMessage(plugin.configMessage.getConfigMessage("genderRemove"));
+				return true;
+			}
+
 			///// CHANGE GENDER /////
 			if ("gender".equalsIgnoreCase(args[0])) {
 				if (!player.hasPermission("fm.gender.choose")) {
@@ -492,7 +524,8 @@ public class Commands implements CommandExecutor {
 						if (plugin.playerDataManager.getPlayerName(key).equals(userName)) {
 							if (plugin.playerDataManager.getParentOneUUID(key).equals(playerUUID)
 									|| plugin.playerDataManager.getParentTwoUUID(playerUUID).equals(key)) {
-								plugin.broadcast.kidDisown(player.getName(), plugin.playerDataManager.getPlayerName(key));
+								plugin.broadcast.kidDisown(player.getName(),
+										plugin.playerDataManager.getPlayerName(key));
 								plugin.playerDataManager.setParentOneUUID(key, "N/A");
 								plugin.playerDataManager.setParentTwoUUID(key, "N/A");
 								plugin.playerDataManager.setParentOneName(key, "N/A");
