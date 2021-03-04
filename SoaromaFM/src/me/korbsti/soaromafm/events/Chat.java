@@ -26,7 +26,7 @@ public class Chat implements Listener {
 				String n = p.getUniqueId().toString();
 				if (p.hasPermission("fm.use.familychat")
 						&& plugin.familyName.get(n).equals(plugin.familyName.get(uuid))) {
-					p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+					p.sendMessage(plugin.hex.translateHexColorCodes("#", "/",
 							plugin.yamlConfig.getString("familyChatFormat")
 									.replace("{family}", plugin.yamlConfig.getString("family-chat-prefix"))
 									.replace("{displayName}", p.getDisplayName())
@@ -34,11 +34,9 @@ public class Chat implements Listener {
 				}
 			}
 			Bukkit.getLogger()
-			.info(ChatColor.translateAlternateColorCodes('&',
-					plugin.yamlConfig.getString("familyChatFormat")
-					.replace("{family}", plugin.yamlConfig.getString("family-chat-prefix"))
-					.replace("{displayName}", player.getDisplayName())
-					.replace("{message}", e.getMessage())));
+					.info(plugin.hex.translateHexColorCodes("#", "/", plugin.yamlConfig.getString("familyChatFormat")
+							.replace("{family}", plugin.yamlConfig.getString("family-chat-prefix"))
+							.replace("{displayName}", player.getDisplayName()).replace("{message}", e.getMessage())));
 			e.setCancelled(true);
 		}
 		if (plugin.updateDisplayNameChat) {

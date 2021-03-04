@@ -13,6 +13,6 @@ public class ConfigMessages {
 	}
 
 	public String getConfigMessage(String config) {
-		return ChatColor.translateAlternateColorCodes('&', plugin.yamlConfig.getString(config));
+		return plugin.hex.translateHexColorCodes("#", "/", plugin.yamlConfig.getString(config));
 	}
 }

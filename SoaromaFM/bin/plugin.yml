@@ -1,9 +1,10 @@
 name: SoaromaFM
-version: 0.0.2
+version: 0.0.5
 description: Its a family roleplay plugin... with marriage and kids and uh stuff...
 author: Korbsti
 main: me.korbsti.soaromafm.SoaromaFM
 api-version: 1.16
 depend: [Vault]
+softdepend: [PlaceholderAPI]
 commands:
    fm:

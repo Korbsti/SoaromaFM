@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -113,7 +112,6 @@ public class Commands implements CommandExecutor {
 						if (!"N/A".equals(plugin.familyName.get(uuid))) {
 							player.sendMessage(plugin.configMessage.getConfigMessage("leaveFamilyFirst"));
 						}
-
 						plugin.pendingMarriageAccept.put(uuid, args[2]);
 						String targetSenderName = targetSender.getName();
 						String targetUUID = targetSender.getUniqueId().toString();
@@ -124,7 +122,7 @@ public class Commands implements CommandExecutor {
 							sender.sendMessage(plugin.configMessage.getConfigMessage("marriageProposalAccepter")
 									.replace("{name}", targetSenderName));
 							targetSender.sendMessage(plugin.configMessage.getConfigMessage("marriageProposalAccept")
-									.replace("{name}", targetSenderName));
+									.replace("{name}", sender.getName()));
 							plugin.yamlConfigData.addDefault("family-names", args[2]);
 							plugin.playerDataManager.setMarriedTo(uuid, targetSenderName);
 							plugin.playerDataManager.setMarriedTo(targetUUID, playerName);
@@ -164,6 +162,10 @@ public class Commands implements CommandExecutor {
 						|| plugin.playerDataManager.getParentOneUUID(uuid).equals(tUUID)
 						|| plugin.playerDataManager.getParentTwoUUID(uuid).equals(tUUID)) {
 					sender.sendMessage(plugin.configMessage.getConfigMessage("sameFamily"));
+					return true;
+				}
+				if(args[2].length() >= plugin.yamlConfig.getInt("toolongFamilyNameCharLimit")) {
+					sender.sendMessage(plugin.configMessage.getConfigMessage("tooLongFamilyName"));
 					return true;
 				}
 				for (String str : plugin.takenFamilyNames) {
@@ -258,7 +260,7 @@ public class Commands implements CommandExecutor {
 					return true;
 				}
 				for (String str : plugin.helpMenu) {
-					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', str));
+					sender.sendMessage(plugin.hex.translateHexColorCodes("#", "/", str));
 				}
 				return true;
 			}
@@ -503,7 +505,8 @@ public class Commands implements CommandExecutor {
 							.replace("{gender}", plugin.playerDataManager.getUserGender(targetUUID))
 							.replace("{parents}", parents.toString()).replace("{siblings}", siblings.toString())
 							.replace("{user}", targetSender.getName()).replace("{children}", children.toString());
-					player.sendMessage(ChatColor.translateAlternateColorCodes('&', holder));
+					
+					player.sendMessage(plugin.hex.translateHexColorCodes("#", "/", holder));
 
 				}
 				return true;
@@ -530,6 +533,7 @@ public class Commands implements CommandExecutor {
 								plugin.playerDataManager.setParentTwoUUID(key, "N/A");
 								plugin.playerDataManager.setParentOneName(key, "N/A");
 								plugin.playerDataManager.setParentTwoName(key, "N/A");
+								plugin.playerDataManager.setFamilyNameTo(key, "N/A");
 								try {
 									plugin.yamlConfigData.save(plugin.configFileData);
 								} catch (IOException e) {
